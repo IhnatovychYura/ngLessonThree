@@ -15,11 +15,13 @@ export class UserComponent {
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
   }
   navigate(user: UserModel) {
+    // users/1/posts
     this.router.navigate([user.id, 'posts'],
       {
         state: {user},
         queryParams: {idOfUser: user.id},
-        relativeTo: this.activatedRoute
+
+        relativeTo: this.activatedRoute  // ця стрічка дозволить нам продовжити від батьківської url
       });
   }
 }

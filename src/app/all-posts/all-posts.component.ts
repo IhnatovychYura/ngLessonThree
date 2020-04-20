@@ -17,17 +17,26 @@ export class AllPostsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router)
   {
-//    this.activatedRoute
-//      .params
-//      .subscribe(params =>
-//      this.postService
-//        .getPosts(params.id)
-//        .subscribe(postsFromServer => this.posts = postsFromServer));
-//    this.activatedRoute.queryParams.subscribe(queryParams => console.log(queryParams));
-//    this.activatedRoute.params.subscribe(params => console.log(params));
-//    console.log(this.router.getCurrentNavigation().extras.state.user, '!!!!');
+    this.activatedRoute
+      .params
+      .subscribe(params =>
+      this.postService
+        .getPosts(params.id)
+        .subscribe(postsFromServer => this.posts = postsFromServer));
+//
+//    Варіант 1 - з queryParams
+//    this.activatedRoute.queryParams.subscribe(queryParams =>
+//      this.postService.getPosts(queryParams.idOfUser).subscribe(value = console.log(value))
+//      );
+//    Варіант 2 - з params
+//    this.activatedRoute.params.subscribe(params =>
+//      this.postService.getPosts(params.id).subscribe(value = console.log(value))
+//      );
+//    Варіант 3 - із state
+//    this.PostService.getPosts(this.router.getCurrentNavigation().extras.state.user.id)
+//    .subscribe(value = console.log(value));
 
-    this.posts = this.activatedRoute.snapshot.data.allPosts;
+//    this.posts = this.activatedRoute.snapshot.data.allPosts;
   }
 
   ngOnInit(): void {

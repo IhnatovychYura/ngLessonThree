@@ -20,7 +20,7 @@ const routes: Routes = [
       {path: 'hi', component: HiComponent},
     ]},
   {path: 'users', component: AllUsersComponent, resolve: {allUsers: UserResolverService}, children: [
-      {path: ':id/posts', component: AllPostsComponent, resolve: {allPosts: PostResolverService}}
+      {path: ':id/posts', component: AllPostsComponent}
     ]},
   {path: 'hello/ola', component: OlaComponent},
 ];
