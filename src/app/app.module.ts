@@ -8,11 +8,21 @@ import { HelloComponent } from './hello/hello.component';
 import {RouterModule, Routes} from '@angular/router';
 import { AllUsersComponent } from './all-users/all-users.component';
 import {UserResolverService} from './services/user-resolver.service';
+import { HiComponent } from './hi/hi.component';
+import { OlaComponent } from './ola/ola.component';
+import { AllPostsComponent } from './all-posts/all-posts.component';
+import { PostComponent } from './post/post.component';
+import {PostResolverService} from './services/post-resolver.service';
 
 const routes: Routes = [
   // localhost: 4200/users -> UserComponent
-  {path: '', component: HelloComponent},
-  {path: 'users', component: AllUsersComponent, resolve: {allUsers: UserResolverService} }
+  {path: 'hello', component: HelloComponent, children: [
+      {path: 'hi', component: HiComponent},
+    ]},
+  {path: 'users', component: AllUsersComponent, resolve: {allUsers: UserResolverService}, children: [
+      {path: ':id/posts', component: AllPostsComponent, resolve: {allPosts: PostResolverService}}
+    ]},
+  {path: 'hello/ola', component: OlaComponent},
 ];
 
 @NgModule({
@@ -21,6 +31,10 @@ const routes: Routes = [
     UserComponent,
     HelloComponent,
     AllUsersComponent,
+    HiComponent,
+    OlaComponent,
+    AllPostsComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,

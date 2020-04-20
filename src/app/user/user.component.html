@@ -2,5 +2,6 @@
   {{user.id}}
   {{user.name}}
   {{user.username}}
-  <button>show details</button>
+  <button (click)="navigate(user)">show details</button>
 </div>
+<router-outlet></router-outlet>
